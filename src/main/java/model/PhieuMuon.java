@@ -19,8 +19,15 @@ public class PhieuMuon implements Serializable {
 	@Column(name="id_phieu")
 	private int idPhieu;
 
-	@Column(name="id_sach")
-	private int idSach;
+	//bi-directional many-to-one association to Sach
+	@ManyToOne
+	@JoinColumn(name="id_sach")
+	private Sach sach;
+	
+	//bi-directional many-to-one association to DocGia
+	@ManyToOne
+	@JoinColumn(name="id_doc_gia")
+	private DocGia docGia;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="ngay_hen_tra")
@@ -37,10 +44,7 @@ public class PhieuMuon implements Serializable {
 	@Column(name="trang_thai")
 	private String trangThai;
 
-	//bi-directional many-to-one association to DocGia
-	@ManyToOne
-	@JoinColumn(name="id_doc_gia")
-	private DocGia docGia;
+	
 
 	public PhieuMuon() {
 	}
