@@ -57,13 +57,7 @@ public class PhieuMuon implements Serializable {
 		this.idPhieu = idPhieu;
 	}
 
-	public int getIdSach() {
-		return this.idSach;
-	}
-
-	public void setIdSach(int idSach) {
-		this.idSach = idSach;
-	}
+	
 
 	public Date getNgayHenTra() {
 		return this.ngayHenTra;
@@ -103,6 +97,13 @@ public class PhieuMuon implements Serializable {
 
 	public void setDocGia(DocGia docGia) {
 		this.docGia = docGia;
+	}
+	public int getSach() {
+		return this.sach;
+	}
+
+	public void setIdSach(Sach sach) {
+		this.sach =sach ;
 	}
 
 }
