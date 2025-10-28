@@ -98,7 +98,7 @@ public class PhieuMuon implements Serializable {
 	public void setDocGia(DocGia docGia) {
 		this.docGia = docGia;
 	}
-	public int getSach() {
+	public Sach getSach() {
 		return this.sach;
 	}
 
