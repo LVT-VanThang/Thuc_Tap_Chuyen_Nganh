@@ -9,7 +9,7 @@ import util.HibernateUtil;
 public class SachDAO {
       public List<Sach> layDanhSachSach(){
     	  EntityManager em =HibernateUtil.getEMF().createEntityManager();
-    	  List<Sach> dss=em.createQuery("from sach").getResultList();
+    	  List<Sach> dss=em.createQuery("from Sach").getResultList();
     	  em.close();
     	  return dss;
       }
