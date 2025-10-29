@@ -59,7 +59,27 @@ public class DanhSachSach extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+		request.setCharacterEncoding("UTF-8");
+		String tenSach=request.getParameter("tenSach");
+		String tacGia=request.getParameter("tacGia");
+		String isbn=request.getParameter("isbn");
+		String nhaXuatBan=request.getParameter("nhaXuatBan");
+		int namXuatBan=Integer.parseInt(request.getParameter("namXuatBan"));
+		String theLoai=request.getParameter("theLoai");
+		int soLuong=Integer.parseInt(request.getParameter("soLuong"));
+		
+		Sach sachMoi=new Sach();
+		sachMoi.setTenSach(tenSach);
+		sachMoi.setTacGia(tacGia);
+		sachMoi.setIsbn(isbn);
+		sachMoi.setNhaXuatBan(nhaXuatBan);
+		sachMoi.setNamXuatBan(namXuatBan);
+		sachMoi.setTheLoai(theLoai);
+		sachMoi.setSoLuong(soLuong);
+		
+		SachDAO sachDAO1 =new SachDAO();
+		sachDAO1.themSach(sachMoi);
+		response.sendRedirect("DanhSachSach");
+;	}
 
 }

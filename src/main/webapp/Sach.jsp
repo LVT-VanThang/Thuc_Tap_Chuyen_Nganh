@@ -72,16 +72,16 @@
       <div class="modal-content">
         <span class="close-btn" onclick="closeModal('bookModal')">&times;</span>
         <h2>Thêm sách mới</h2>
-        <form>
-            <div class="form-group"><label>Mã Sách</label><input type="text"></div>
-            <div class="form-group"><label>Tiêu đề sách</label><input type="text"></div>
-            <div class="form-group"><label>Tác giả</label><input type="text"></div>
-            <div class="form-group"><label>ISBN</label><input type="text"></div>
-            <div class="form-group"><label>Nhà xuất bản</label><input type="text"></div>
-            <div class="form-group"><label>Năm xuất bản</label><input type="number"></div>
-            <div class="form-group"><label>Thể loại</label><input type="text"></div>
-            <div class="form-group"><label>Số lượng</label><input type="number"></div>
-            <button type="submit" class="btn btn-success">Lưu lại</button>
+        <form action="DanhSachSach" method="post">
+        <div class="form-group"><label>Tiêu đề sách</label><input type="text" name="tenSach" required></div>
+        <div class="form-group"><label>Tác giả</label><input type="text" name="tacGia" required></div>
+        <div class="form-group"><label>ISBN</label><input type="text" name="isbn"></div>
+        <div class="form-group"><label>Nhà xuất bản</label><input type="text" name="nhaXuatBan"></div>
+        <div class="form-group"><label>Năm xuất bản</label><input type="number" name="namXuatBan" required></div>
+        <div class="form-group"><label>Thể loại</label><input type="text" name="theLoai"></div>
+        <div class="form-group"><label>Số lượng</label><input type="number" name="soLuong" required></div>
+        
+        <button type="submit" class="btn btn-success">Lưu lại</button>
         </form>
       </div>
     </div>

@@ -56,18 +56,41 @@ public class SachDAO {
 		}
       }
       public void themSach(Sach sach) {
-    	  EntityManager em=HibernateUtil.getEMF().createEntityManager();
-		   em.getTransaction().begin();
-		   em.persist(sach);
-		   em.close();
-		   em.getTransaction().commit();
+          EntityManager em = HibernateUtil.getEMF().createEntityManager();
+          try {
+              em.getTransaction().begin();
+              em.persist(sach);
+              em.getTransaction().commit(); 
+          } catch (Exception e) {
+              if (em.getTransaction().isActive()) {
+                  em.getTransaction().rollback();
+              }
+              e.printStackTrace();
+          } finally {
+              if (em != null && em.isOpen()) {
+                  em.close();
+              }
+          }
       }
+
       public void xoaSach(int maSach) {
-    	  EntityManager em=HibernateUtil.getEMF().createEntityManager();
-		   em.getTransaction().begin();
-		   Sach list=em.find(Sach.class, maSach);
-		   em.remove(list);
-		   em.close();
-		   em.getTransaction().commit(); 
+          EntityManager em = HibernateUtil.getEMF().createEntityManager();
+          try {
+              em.getTransaction().begin();
+              Sach sachCanXoa = em.find(Sach.class, maSach);
+              if (sachCanXoa != null) {
+                  em.remove(sachCanXoa);
+              }
+              em.getTransaction().commit();
+          } catch (Exception e) {
+              if (em.getTransaction().isActive()) {
+                  em.getTransaction().rollback();
+              }
+              e.printStackTrace();
+          } finally {
+              if (em != null && em.isOpen()) {
+                  em.close();
+              }
+          }
       }
 }
