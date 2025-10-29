@@ -24,9 +24,10 @@
         <div class="container">
             <h1>Danh sách Sách</h1>
             <div class="toolbar">
-                <div class="search-bar">
-                    <input type="text" placeholder="Tìm kiếm theo tên sách, tác giả...">
-                </div>
+                <form action="DanhSachSach" method="get" class="search-bar">
+                    <input type="text" name="tuKhoa" placeholder="Tìm theo tên sách, tác giả..." value="${param.tuKhoa}">
+                    <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                </form>
                 <button class="btn btn-primary" onclick="openModal('bookModal')">Thêm sách mới</button>
             </div>
             <table class="data-table">
@@ -40,6 +41,7 @@
                         <th>Năm Xuất Bản</th>
                         <th>Thể loại</th>
                         <th>Số lượng </th>
+                        <th>Hành động </th>
                         <th></th>
                     </tr>
                 </thead>

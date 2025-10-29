@@ -1,7 +1,10 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,8 +36,19 @@ public class DanhSachSach extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 	    response.setCharacterEncoding("UTF-8");
-		SachDAO sachdao=new SachDAO();
-		List<Sach> dss=sachdao.layDanhSachSach();
+	    SachDAO sachDAO=new SachDAO();
+	    String tuKhoa=request.getParameter("tuKhoa");
+		List<Sach> dss;
+		if(tuKhoa !=null && !tuKhoa.trim().isEmpty()) {
+			List<Sach> ketQuaTheoTen = sachDAO.timKiemTheoTenSach(tuKhoa);
+            List<Sach> ketQuaTheoTacGia = sachDAO.timKiemTheoTacGia(tuKhoa);
+            
+            Set<Sach> ketQuaGop = new HashSet<>(ketQuaTheoTen);
+            ketQuaGop.addAll(ketQuaTheoTacGia);
+            dss = new ArrayList<>(ketQuaGop);
+		}else {
+            dss = sachDAO.layDanhSachSach();
+        }
 		System.out.println("So luong sach tim thay: " + dss.size());
 		request.setAttribute("dss", dss);
 		request.getRequestDispatcher("Sach.jsp").forward(request, response);
